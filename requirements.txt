@@ -1,0 +1,4 @@
+kaggle==1.5.12
+pandas==1.4.3
+scikit-learn==1.1.2
+tabulate

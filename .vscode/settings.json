@@ -1,0 +1,24 @@
+{
+  "material-icon-theme.folders.associations": {
+    "dataset": "Database"
+  },
+
+  "material-icon-theme.files.associations": {
+    "library.py": "Lib",
+    "core.py": "Verilog"
+  },
+
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingImports": "none",
+    "reportMissingModuleSource": "none" // applied to library.py
+  },
+
+  "cSpell.words": [
+    "brunobacelardc",
+    "dataframe",
+    "kaggle",
+    "myanimelist",
+    "Rahaman",
+    "Rimuru"
+  ]
+}
