@@ -7,7 +7,8 @@ Guide: core.py
 Method or class should be prefixed with `rr_`, because differentiate from others.
 """
 
-from library import ipy_display, pd_dataframe, pd_series
+# pylint: disable=locally-disabled, E0611:no-name-in-module
+from library import ipy_display, pd_dataframe, pd_series, sk_multilabel_binarizer
 
 
 def rr_clean_alt_list(list_):
@@ -21,7 +22,7 @@ def rr_clean_alt_list(list_):
         ']', '').replace('\'', '')
 
 
-def rr_unique(dataset: list, to_lower: bool, split_from: str) -> list:
+def rr_unique_str(dataset: list, to_lower: bool, split_from: str) -> list:
     """
     Return the unique element of a "specific type" of list.
 
@@ -43,6 +44,26 @@ def rr_unique(dataset: list, to_lower: bool, split_from: str) -> list:
             else:
                 unique_elements[item] = 1
     return list(unique_elements.keys())
+
+
+# TODO(@Adam-Al-Rahaman): combine with rr_unique_str
+# and remove this one.
+def rr_unique(dataset: pd_series) -> pd_series:
+    unique_elements = {}
+
+    for element in dataset:
+        if type(element) == list:
+            for item in element:
+                if item in unique_elements.keys():
+                    unique_elements[item] += 1
+                else:
+                    unique_elements[item] = 1
+        else:
+            if element in unique_elements.keys():
+                unique_elements[element] += 1
+            else:
+                unique_elements[element] = 1
+    return pd_series(unique_elements.keys())
 
 
 def rr_display(dataset: pd_dataframe) -> None:
@@ -96,9 +117,30 @@ def rr_str_series(dataset, split_from=",", strip_white_space: bool = False, to_l
     return rr_to_series(items)
 
 
+def rr_encoding(dataframe: pd_dataframe, col: str):
+    sk_mlb = sk_multilabel_binarizer()
+    dataframe = dataframe.join(
+        pd_dataframe(
+            sk_mlb.fit_transform(dataframe.pop(col)),
+            index=dataframe.index,
+            columns=col + "_" + sk_mlb.classes_
+        )
+    )
+    return dataframe
+
+
 def rr_remove_none(dataset: pd_dataframe, col: str, assign_val):
-    # remove the "None" from "Genres"
+    """remove the 'None' from 'Genres'"""
 
     for index, element in enumerate(dataset[col]):
         if element == ["None"]:
             dataset[col][index] = assign_val
+
+
+def rr_to_df(dataset: pd_series, unique_items):
+    bool_dict = {}
+
+    for _, element in enumerate(unique_items):
+        bool_dict[element] = dataset.apply(lambda x: element in x)
+
+    return pd_dataframe(bool_dict)
