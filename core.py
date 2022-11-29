@@ -16,7 +16,7 @@ def rr_clean_alt_list(list_):
     Replace the certain value in the list of string
 
     Args:
-        list_: The list that contain the string.
+      list_: The list that contain the string.
     """
     return list_.replace('[', '').replace(
         ']', '').replace('\'', '')
@@ -137,10 +137,21 @@ def rr_remove_none(dataset: pd_dataframe, col: str, assign_val):
             dataset[col][index] = assign_val
 
 
-def rr_to_df(dataset: pd_series, unique_items):
+def rr_to_df(dataset: pd_series, unique_elements: list):
+    """
+    Convert the list containing str to a separate column
+
+    Args:
+      dataset: pandas series to which need to convert
+      unique_elements: all unique elements that the dataset contains
+    """
     bool_dict = {}
 
-    for _, element in enumerate(unique_items):
+    for _, element in enumerate(unique_elements):
         bool_dict[element] = dataset.apply(lambda x: element in x)
 
     return pd_dataframe(bool_dict)
+
+
+def rr_to_numeric(dataset: pd_series):
+    dataset_unique = len(rr_unique(dataset))
