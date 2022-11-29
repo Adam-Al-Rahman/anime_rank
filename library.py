@@ -27,6 +27,16 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import MultiLabelBinarizer
 
+# Lib: seaborn
+from seaborn import heatmap
+
+# Lib: seaborn
+from matplotlib.pyplot import subplots, xticks
+
+
+# Lib: numpy
+from numpy import dot
+
 # Method alias casing: lower_snakes_case
 # Class alias casing: PascalCase
 
@@ -41,6 +51,20 @@ pd_dataframe = DataFrame
 pd_series = Series
 pd_eval = eval
 pd_get_dummies = get_dummies
+
+# Required [method|class]: numpy.*
+# Alias prefix: np_
+np_dot = dot
+
+
+# Required [method|class]: seaborn.*
+# Alias prefix: sns_
+sns_heatmap = heatmap
+
+# Required [method|class]: matplotlib.*
+# Alias prefix: plt_
+plt_subplots = subplots
+plt_xticks = xticks
 
 
 # Required [method|class]: IPython.*

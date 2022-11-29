@@ -1,5 +1,7 @@
 # Anime POP Rank
 
+Predicting anime popularity rank taking consideration of [Genres, Type, Score, Studio, Score Rank].
+
 ## Dataset Credit
 
 - Medium: Kaggle
@@ -10,8 +12,8 @@
 
 ## The Team
 
-Anime Rank is currently maintained by `Atiq Urrehaman`, .
+Anime POP Rank is currently maintained by `Atiq Urrehaman` .
 
 ## License
 
-Anime Rank has a MIT-style license, as found in the [MIT License](LICENSE) file.
+Anime POP Rank has a MIT-style license, as found in the [MIT License](LICENSE) file.

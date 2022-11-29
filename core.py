@@ -154,4 +154,4 @@ def rr_to_df(dataset: pd_series, unique_elements: list):
 
 
 def rr_to_numeric(dataset: pd_series):
-    dataset_unique = len(rr_unique(dataset))
+    dataset_unique_len = len(rr_unique(dataset))
