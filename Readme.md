@@ -10,8 +10,8 @@
 
 ## The Team
 
-Rimuru is currently maintained by `Atiq Urrehaman`, .
+Anime Rank is currently maintained by `Atiq Urrehaman`, .
 
 ## License
 
-Rimuru has a MIT-style license, as found in the [MIT License](LICENSE) file.
+Anime Rank has a MIT-style license, as found in the [MIT License](LICENSE) file.
